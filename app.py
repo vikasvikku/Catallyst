@@ -21,9 +21,10 @@ load_dotenv()
 # Load NLP model for anonymization
 try:
     nlp = spacy.load("en_core_web_sm")
-except:
-    st.warning("Downloading NLP model for anonymization...")
-    spacy.cli.download("en_core_web_sm")
+except OSError:
+    # For Streamlit Cloud deployment
+    import subprocess
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
 
 # Set page configuration
