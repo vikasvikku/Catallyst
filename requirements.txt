@@ -1,0 +1,9 @@
+spacy
+streamlit
+scikit-learn
+numpy
+matplotlib
+PyPDF2
+groq
+google-generativeai
+python-dotenv
