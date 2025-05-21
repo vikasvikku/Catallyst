@@ -15,6 +15,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 
+# Configure Streamlit for production
+st.set_option('server.enableCORS', False)
+st.set_option('server.enableXsrfProtection', False)
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -22,7 +26,7 @@ load_dotenv()
 try:
     nlp = spacy.load("en_core_web_sm")
 except OSError:
-    # For Streamlit Cloud deployment
+    # For deployment
     import subprocess
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
     nlp = spacy.load("en_core_web_sm")
@@ -31,7 +35,8 @@ except OSError:
 st.set_page_config(
     page_title="Synopsis Scorer", 
     page_icon="📝", 
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 # Custom CSS styling
