@@ -15,10 +15,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 
-# Configure Streamlit for production
-st.set_option('server.enableCORS', False)
-st.set_option('server.enableXsrfProtection', False)
-
 # Load environment variables from .env file
 load_dotenv()
 
